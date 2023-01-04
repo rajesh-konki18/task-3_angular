@@ -1,0 +1,63 @@
+<body>
+    <!-- header -->
+    <div class="top-nav">
+        <img src="assets/saketa.jpg" alt="Main-logo" class="logo left">
+        <div class="nav-title left">
+            <h1 class="text-large text-blue">Employee Directory</h1>
+            <p class="text-small">The Ultimate People Directory Experience.</p>
+        </div>
+        <img src="assets/Andrew.jpg" alt="user-profile" class="nav-img right">
+        <div class="nav-right right">
+            <p class="text-blue text-medium left">Welcome,</p>
+            <p class="text-medium left"> Andrew Philips</p>
+        </div>
+    </div>
+    <hr>
+
+    <!-- main -->
+    <div class="flex-container">
+        <div class="left-bar">
+            <!-- left-filters component -->
+            <app-left-filters></app-left-filters>
+        </div>
+        <div class="primary-section">
+            <!-- alpha filters component -->
+            <app-alpha-filter ></app-alpha-filter>
+            <div class="secondary-section">
+                <!-- top filters component -->
+                <app-top-filters (clr_event)="clear()"></app-top-filters>
+                <!-- add edit component -->
+                <app-add-edit [index]="index"></app-add-edit> 
+            </div>
+            <div class="ternary-section text-small">
+                <p><b>Note: </b> Please use the advanced filter options to refine your results.</p>
+            </div>
+            <div class="fourth-outer">
+                <div class="fourth-section">
+                    <ng-container *ngIf="flag==0">
+                        <div *ngFor="let employee of employees_local; let i=index" class="card" (click)="show(i)">      
+                            <img class="card-img" src= {{employee.src}} >
+                            <div class="card-content">
+                              <p class="text-small text-bold">{{employee.FirstName}}{{employee.LastName}}</p>
+                              <p class="text-smaller">{{employee.JobTitle}}</p>
+                              <p class="text-smaller">{{employee.Department}}</p>
+                              <img src={{employee.src1}} alt="card-end" class="end-img">
+                            </div>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="flag==1">
+                        <div *ngFor="let employee of filteredcards" class="card">      
+                            <img class="card-img" src= {{employee.src}} >
+                            <div class="card-content">
+                              <p class="text-small text-bold">{{employee.FirstName}} {{employee.LastName}}</p>
+                              <p class="text-smaller">{{employee.JobTitle}}</p>
+                              <p class="text-smaller">{{employee.Department}}</p>
+                              <img src={{employee.src1}} alt="card-end" class="end-img">
+                            </div>
+                        </div>
+                    </ng-container>    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

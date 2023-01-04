@@ -1,0 +1,26 @@
+<ul class="primary-list">
+    <h2 >Departments</h2>
+    <li class="dep-name" [ngClass]=" dp[i]==1 ? 'lft_brdr':'no_brdr'" *ngFor="let department of departments; let i=index" (click)="dep_fltr(department.department,i)">
+        {{department.department}} ({{department.num}})
+        
+    </li>
+</ul>
+<ul class="secondary-list">
+    <h2>Offices</h2>
+    <li>Seattle (1)</li>
+    <li>India (1)</li>
+</ul>
+<ul class="ternary-list">
+    <h2>Job Titles</h2>
+    <ng-container  *ngFor="let job of jobs; let i=index">
+        <li [ngClass]=" jb[i]==1 ? 'lft_brdr':'no_brdr'" *ngIf="i<5" (click)="job_fltr(job.job,i)">
+            {{job.job}} ({{job.num}})
+        
+        </li>
+        <li [hidden]=hide [ngClass]=" jb[i]==1 ? 'lft_brdr':'no_brdr'" *ngIf="i>=5" (click)="job_fltr(job.job,i)">
+            {{job.job}} ({{job.num}})
+        </li> 
+    </ng-container>
+    <li class="text-blue text smaller" [hidden]=!hide (click)="expand()">view more</li>
+    <li class="text-blue text smaller" [hidden]=hide (click)="compress()">view less</li>
+</ul>

@@ -1,0 +1,39 @@
+.secondary {
+    display: grid;
+    grid-template-columns: 60% auto;
+    font-size: 1vw;
+}
+
+.button-green {
+    background-color: rgb(81, 177, 81);
+    padding: 2%;
+    color: #e9e8e8;
+    font-size: 1.2vw;
+}
+.secondary-drop {
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: 3vw;
+}
+#dropdown {
+    width: 10vw;
+    background-color: white;
+}
+button:hover {
+    border: 1px black;
+    cursor: pointer;
+}
+.secondary-left {
+    display: flex;
+    justify-content: space-between;
+}
+.line1 {
+    margin-top: 1vh;
+}
+.input {
+    width: 16vw;
+    font-size: 1vw;
+}
+.text-smaller {
+    font-size: 1vw;
+}

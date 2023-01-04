@@ -1,0 +1,53 @@
+<div class="button">
+    <button class="button-blue" (click)="open()">Add Employee</button>
+</div>
+<div class="pop-up">
+    <div id="container" [hidden]="pop_up"> 
+        <table>
+            <tr>
+                <td>First Name</td>
+                <td><input [(ngModel)]="employee_new.FirstName" #frst="ngModel" type="text" class="input" name="FirstName"></td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td><input [(ngModel)]="employee_new.LastName" type="text" class="input" #lst="ngModel" name="LastName"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input [(ngModel)]="employee_new.email" type="email" class="input" #email="ngModel" name="email"></td>
+            </tr>
+            <tr>
+                <td>Job Title</td>
+                <td><select name="Job" class="input" #job="ngModel" [(ngModel)]="employee_new.JobTitle">
+                    <option value={{job.job}} *ngFor="let job of jobs">{{job.job}}</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>Office</td>
+                <td><select name="Office" class="input" #office="ngModel" [(ngModel)]="employee_new.office">
+                    <option value="Seattle">Seattle</option>
+                    <option value="India">India</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>Department</td>
+                <td><select name="department" class="input" #depart="ngModel" [(ngModel)]="employee_new.Department">
+                    <option value={{department.department}} *ngFor="let department of departments">{{department.department}}</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>Phone Number</td>
+                <td><input type="tel" class="input" #phn="ngModel" [(ngModel)]="employee_new.PhoneNumber" name="phone number"></td>
+            </tr>
+            <tr>
+                <td>Skype ID</td>
+                <td><input type="text" class="input" #skype="ngModel" [(ngModel)]="employee_new.SkypeID" name="SkypeID"></td>
+            </tr>
+        </table>
+        <div class="clicks">
+            <button id='save' class="button-blue" [hidden]="hide_save" (click)="save(frst,lst,email,job,office,depart,phn,skype)">save</button>
+            <button class="button-blue" (click)="close()">Submit</button>
+            <button id="add" class="button-blue" (click)="add(frst,lst,email,job,office,depart,phn,skype)">add</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="secondary">
+    <div class="secondary-left">
+        <p class="line1">Search</p>
+        <input type="text" placeholder="Enter any keyword" id="search" class="input" (keyup)="srch_fltr($event)" #txt>
+        <button class="button-green" id="clear" (click)="clear(txt)">Clear</button>
+    </div>
+    <div class="secondary-drop">
+        <p class="line1">Filter by</p>
+        <select name="filter" id="drop-down" class="text-smaller" (change)="drp_fltr($event)">
+            <option value="Preferred Name">Preferred Name</option>
+            <option value="Department">Department</option>
+            <option value="Job Title">Job Title</option>
+        </select>
+    </div>
+</div>
