@@ -15,6 +15,8 @@ export class MainComponent implements OnInit {
 
   clear() {
     this.employees_local=this.empService.getEmployees();
+    this.empService.flag_alphabets();
+    this.empService.flag_subject.next(null);
   }
 
   employees : any;

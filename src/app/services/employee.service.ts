@@ -218,7 +218,11 @@ export class EmployeeService {
   }
 
   flag_alphabets() {
-    return this.alpha_flags.fill(0);
+    let k=0;
+    for (k;k<26;k++){
+      this.alpha_flags[k]=0;
+    }
+    return this.alpha_flags;
   }
   flag_departments() {
     return this.department_flags.fill(0);

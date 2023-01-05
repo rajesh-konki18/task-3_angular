@@ -37,7 +37,7 @@ export class AlphaFilterComponent implements OnInit {
     'Y',
     'Z',
   ];
-  alpha_flags: any;
+  alpha_flags: any = [];
 
   alpha_fltr(alpha: string, i: number) {
     let val = alpha.toLowerCase();
@@ -57,6 +57,6 @@ export class AlphaFilterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.alpha_flags = this.empService.alpha();
+    this.empService.alpha();
   }
 }

@@ -14,7 +14,7 @@ export class LeftFiltersComponent implements OnInit {
   employees_local : any;
   department_flags : any;
   job_flags : any;
-  flag : any;
+  flag : any = null;
   
   expand() {
     this.hide_view=false;
