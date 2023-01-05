@@ -36,35 +36,6 @@ export class AddEditComponent implements OnInit {
 
   }
 
-  employee(ar : any[]) {
-    var employ_main = {
-      src: "",
-      FirstName: "",
-      LastName: "",
-      JobTitle: "",
-      PreferredName: "",
-      Department: "",
-      PhoneNumber: 1,
-      email: "",
-      SkypeID: 1,
-      office: "",
-      src1: "../assets/card-end.jpg",
-    };
-  
-    employ_main.src = ar[0];
-    employ_main.FirstName = ar[1];
-    employ_main.LastName = ar[2];
-    employ_main.JobTitle = ar[3];
-    employ_main.PreferredName = ar[4];
-    employ_main.Department = ar[5];
-    employ_main.PhoneNumber = ar[6];
-    employ_main.email = ar[7];
-    employ_main.SkypeID = ar[8];
-    employ_main.office = ar[9];
-  
-    return employ_main;
-  }
-
   employee_new : any = {
     FirstName: "",
     LastName : "",
@@ -77,10 +48,10 @@ export class AddEditComponent implements OnInit {
     office: "",
   }
 
-  close() {
+  close_form() {
     this.pop_up=true;
   }
-  open() {
+  open_form() {
     this.pop_up=false;
     this.employee_new.FirstName="";
     this.employee_new.LastName="";
@@ -92,18 +63,18 @@ export class AddEditComponent implements OnInit {
     this.employee_new.SkypeID="";
   }
 
-  add(frst : any,lst : any,email : any,job : any,office : any,depart : any,phn : any,skype : any,){
+  add_employee(frst : any,lst : any,email : any,job : any,office : any,depart : any,phn : any,skype : any,){
     if(frst.value=="" || lst.value=="" || email.value== "" || job.value=="" || depart.value=="" || phn.value=="" || skype.value==""){
       alert("Fill all details");
     }
     else{
-      let new_employee= this.employee(["../assets/img-8.jpg",frst.value,lst.value,job.value,frst.value,depart.value + " Department",phn.value,email.value,skype.value,office.value]);
+      let new_employee= this.empService.new_employee(["../assets/img-8.jpg",frst.value,lst.value,job.value,frst.value,depart.value + " Department",phn.value,email.value,skype.value,office.value]);
       let e : any=localStorage.getItem("employees");
       let employee_array = JSON.parse(e);
       employee_array.push(new_employee);
       localStorage.removeItem("employees");
       localStorage.setItem("employees", JSON.stringify(employee_array));
-      this.empService.employ$.next(employee_array);
+      this.empService.employ_subject.next(employee_array);
       
 
       let new_jobs = new_employee.JobTitle;
@@ -120,7 +91,7 @@ export class AddEditComponent implements OnInit {
       }
       localStorage.removeItem("jobs");
       localStorage.setItem("jobs", JSON.stringify(this.jobs));
-      this.empService.job$.next(this.jobs);
+      this.empService.job_subject.next(this.jobs);
 
       let new_dep = new_employee.Department.split(" ")[0];
       if (new_dep.startsWith("IT")) {
@@ -134,12 +105,12 @@ export class AddEditComponent implements OnInit {
       }
       localStorage.removeItem("departments");
       localStorage.setItem("departments", JSON.stringify(this.departments));
-      this.empService.department$.next(this.departments);
+      this.empService.department_subject.next(this.departments);
 
     }
   }
 
-  save(frst : any,lst : any,email : any,job : any,office : any,depart : any,phn : any,skype : any){
+  save_changes(frst : any,lst : any,email : any,job : any,office : any,depart : any,phn : any,skype : any){
     if(frst.value=="" || lst.value=="" || email.value== "" || job.value=="" || depart.value=="" || phn.value=="" || skype.value==""){
       alert("Fill all details");
     }
@@ -155,7 +126,7 @@ export class AddEditComponent implements OnInit {
       save_employ[this.index].SkypeID=skype.value;
       localStorage.removeItem("employees");
       localStorage.setItem("employees", JSON.stringify(save_employ));
-      this.empService.employ$.next(save_employ);
+      this.empService.employ_subject.next(save_employ);
     } 
   }
 

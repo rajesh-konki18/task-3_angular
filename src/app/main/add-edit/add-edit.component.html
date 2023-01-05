@@ -1,5 +1,5 @@
 <div class="button">
-    <button class="button-blue" (click)="open()">Add Employee</button>
+    <button class="button-blue" (click)="open_form()">Add Employee</button>
 </div>
 <div class="pop-up">
     <div id="container" [hidden]="pop_up"> 
@@ -45,9 +45,9 @@
             </tr>
         </table>
         <div class="clicks">
-            <button id='save' class="button-blue" [hidden]="hide_save" (click)="save(frst,lst,email,job,office,depart,phn,skype)">save</button>
-            <button class="button-blue" (click)="close()">Submit</button>
-            <button id="add" class="button-blue" (click)="add(frst,lst,email,job,office,depart,phn,skype)">add</button>
+            <button id='save' class="button-blue" [hidden]="hide_save" (click)="save_changes(frst,lst,email,job,office,depart,phn,skype)">save</button>
+            <button class="button-blue" (click)="close_form()">Submit</button>
+            <button id="add" class="button-blue" (click)="add_employee(frst,lst,email,job,office,depart,phn,skype)">add</button>
         </div>
     </div>
 </div>

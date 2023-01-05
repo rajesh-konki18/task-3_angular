@@ -1,4 +1,4 @@
-<body>
+<div class="main">
     <!-- header -->
     <div class="top-nav">
         <img src="assets/saketa.jpg" alt="Main-logo" class="logo left">
@@ -13,7 +13,7 @@
         </div>
     </div>
     <hr>
-
+    
     <!-- main -->
     <div class="flex-container">
         <div class="left-bar">
@@ -34,30 +34,17 @@
             </div>
             <div class="fourth-outer">
                 <div class="fourth-section">
-                    <ng-container *ngIf="flag==0">
-                        <div *ngFor="let employee of employees_local; let i=index" class="card" (click)="show(i)">      
-                            <img class="card-img" src= {{employee.src}} >
-                            <div class="card-content">
-                              <p class="text-small text-bold">{{employee.FirstName}}{{employee.LastName}}</p>
-                              <p class="text-smaller">{{employee.JobTitle}}</p>
-                              <p class="text-smaller">{{employee.Department}}</p>
-                              <img src={{employee.src1}} alt="card-end" class="end-img">
-                            </div>
+                    <div *ngFor="let employee of employees_local; let i=index" class="card" (click)="show(i)">      
+                        <img class="card-img" src= {{employee.src}} >
+                        <div class="card-content">
+                            <p class="text-small text-bold">{{employee.FirstName}}{{employee.LastName}}</p>
+                            <p class="text-smaller">{{employee.JobTitle}}</p>
+                            <p class="text-smaller">{{employee.Department}}</p>
+                            <img src={{employee.src1}} alt="card-end" class="end-img">
                         </div>
-                    </ng-container>
-                    <ng-container *ngIf="flag==1">
-                        <div *ngFor="let employee of filteredcards" class="card">      
-                            <img class="card-img" src= {{employee.src}} >
-                            <div class="card-content">
-                              <p class="text-small text-bold">{{employee.FirstName}} {{employee.LastName}}</p>
-                              <p class="text-smaller">{{employee.JobTitle}}</p>
-                              <p class="text-smaller">{{employee.Department}}</p>
-                              <img src={{employee.src1}} alt="card-end" class="end-img">
-                            </div>
-                        </div>
-                    </ng-container>    
+                    </div>   
                 </div>
             </div>
         </div>
     </div>
-</body>
+</div>

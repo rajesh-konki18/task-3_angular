@@ -19,7 +19,7 @@ export class TopFiltersComponent implements OnInit {
   clear(val : any){
     val.value=null;
     this.clr_event.emit();
-    this.empService.flag_alpha();
+    this.empService.flag_alphabets();
     this.empService.flag_departments();
     this.empService.flag_jobs();
   }
@@ -28,7 +28,7 @@ export class TopFiltersComponent implements OnInit {
     let filteredcards;
     if(this.name==true){
       let e=val.target.value.toLowerCase();
-      if(this.f==null){
+      if(this.flag==null){
         filteredcards=this.employees_local.filter(function (card : any) {
           return (
             card.FirstName.toLowerCase().startsWith(e)
@@ -38,15 +38,14 @@ export class TopFiltersComponent implements OnInit {
       else {
         filteredcards=this.employees_local.filter( (card : any) => {
           return (
-            card.FirstName.toLowerCase().startsWith(e) && card.FirstName.startsWith(String.fromCharCode(this.f+65))
+            card.FirstName.toLowerCase().startsWith(e) && card.FirstName.startsWith(String.fromCharCode(this.flag+65))
             )})
       }
-    
     }
 
     else if(this.department==true){
       let e=val.target.value.toLowerCase();
-      if(this.f==null){
+      if(this.flag==null){
         filteredcards=this.employees_local.filter(function (card : any) {
           return (
             card.Department.toLowerCase().startsWith(e)
@@ -56,15 +55,15 @@ export class TopFiltersComponent implements OnInit {
       else {
         filteredcards=this.employees_local.filter( (card : any) => {
           return (
-            card.Department.toLowerCase().startsWith(e) && card.FirstName.startsWith(String.fromCharCode(this.f+65))
+            card.Department.toLowerCase().startsWith(e) && card.FirstName.startsWith(String.fromCharCode(this.flag+65))
           );
         });
       }
-      
     }
+
     else if(this.job==true){
       let e=val.target.value.toLowerCase();
-      if(this.f==null){
+      if(this.flag==null){
         console.log(e,);
         filteredcards=this.employees_local.filter(function (card : any) {
           return (
@@ -72,17 +71,18 @@ export class TopFiltersComponent implements OnInit {
           );
         })
       }
+
       else {
         console.log(456);
         filteredcards=this.employees_local.filter( (card : any) => {
           return (
-            card.JobTitle.toLowerCase().startsWith(e) && card.FirstName.startsWith(String.fromCharCode(this.f+65))
+            card.JobTitle.toLowerCase().startsWith(e) && card.FirstName.startsWith(String.fromCharCode(this.flag+65))
           );
         })
-      }
-      
+      } 
     }
-    this.empService.employ$.next(filteredcards);
+    
+    this.empService.employ_subject.next(filteredcards);
   }
   
   drp_fltr(drop : any) {
@@ -111,20 +111,20 @@ export class TopFiltersComponent implements OnInit {
       a.JobTitle < b.JobTitle ? -1 : 1
     );
     }
-    this.empService.employ$.next(filteredcards);
+    this.empService.employ_subject.next(filteredcards);
     }
   constructor(private empService : EmployeeService) {
     this.employees_local=this.empService.getEmployees();
     
   }
 
-  f : any;
+  flag : any;
 
   ngOnInit(): void {
     this.empService.alpha();
     this.empService.department();
     this.empService.job();
-    this.empService.flag_alpha$.subscribe(val =>{this.f=val;});
+    this.empService.flag_subject.subscribe(val =>{this.flag=val;});
   }
 
 }

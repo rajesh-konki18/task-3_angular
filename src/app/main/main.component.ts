@@ -11,11 +11,9 @@ export class MainComponent implements OnInit {
 
   @ViewChild(AddEditComponent) AddEditComponent : any;
 
-  flag=0;
   index=0;
 
   clear() {
-    this.flag=0;
     this.employees_local=this.empService.getEmployees();
   }
 
@@ -38,24 +36,12 @@ export class MainComponent implements OnInit {
   
   }
 
-  employee_new : any = {
-    FirstName: "",
-    LastName : "",
-    JobTitle: "",
-    PreferredName: "",
-    Department: "",
-    PhoneNumber: "",
-    email: "",
-    SkypeID: "",
-    office: "",
-  }
-
   show(i : any){
     this.AddEditComponent.show(i);
     this.index=i;
   }
  
   ngOnInit(): void {
-    this.empService.employ$.subscribe(val => { this.employees_local=val;});
+    this.empService.employ_subject.subscribe(val => { this.employees_local=val;});
   }
 }

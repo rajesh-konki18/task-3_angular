@@ -1,4 +1,4 @@
-.secondary {
+.main {
     display: grid;
     grid-template-columns: 60% auto;
     font-size: 1vw;
@@ -10,7 +10,7 @@
     color: #e9e8e8;
     font-size: 1.2vw;
 }
-.secondary-drop {
+.drop {
     display: flex;
     justify-content: space-evenly;
     margin-left: 3vw;
@@ -23,7 +23,7 @@ button:hover {
     border: 1px black;
     cursor: pointer;
 }
-.secondary-left {
+.left {
     display: flex;
     justify-content: space-between;
 }
