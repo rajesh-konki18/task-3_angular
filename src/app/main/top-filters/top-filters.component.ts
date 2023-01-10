@@ -13,30 +13,30 @@ export class TopFiltersComponent implements OnInit {
   department : boolean = false;
   job : boolean = false;
 
-  @Output() clr_event = new EventEmitter();
+  @Output() clear_event = new EventEmitter();
 
 
-  clear(val : any){
-    val.value=null;
-    this.clr_event.emit();
-    this.empService.flag_alphabets();
-    this.empService.flag_departments();
-    this.empService.flag_jobs();
+  clear(value : any){
+    value.value=null;
+    this.clear_event.emit();
+    this.empService.flagAlphabets();
+    this.empService.flagDepartments();
+    this.empService.flagJobs();
   }
 
-  srch_fltr(val : any) {
-    let filteredcards;
+  searchFilter(value : any) {
+    let filtered_cards;
     if(this.name==true){
-      let e=val.target.value.toLowerCase();
+      let e=value.target.value.toLowerCase();
       if(this.flag==null){
-        filteredcards=this.employees_local.filter(function (card : any) {
+        filtered_cards=this.employees_local.filter(function (card : any) {
           return (
             card.FirstName.toLowerCase().startsWith(e)
           );
         })
       }
       else {
-        filteredcards=this.employees_local.filter( (card : any) => {
+        filtered_cards=this.employees_local.filter( (card : any) => {
           return (
             card.FirstName.toLowerCase().startsWith(e) && card.FirstName.startsWith(String.fromCharCode(this.flag+65))
             )})
@@ -44,16 +44,16 @@ export class TopFiltersComponent implements OnInit {
     }
 
     else if(this.department==true){
-      let e=val.target.value.toLowerCase();
+      let e=value.target.value.toLowerCase();
       if(this.flag==null){
-        filteredcards=this.employees_local.filter(function (card : any) {
+        filtered_cards=this.employees_local.filter(function (card : any) {
           return (
             card.Department.toLowerCase().startsWith(e)
           );
         });
       }
       else {
-        filteredcards=this.employees_local.filter( (card : any) => {
+        filtered_cards=this.employees_local.filter( (card : any) => {
           return (
             card.Department.toLowerCase().startsWith(e) && card.FirstName.startsWith(String.fromCharCode(this.flag+65))
           );
@@ -62,10 +62,9 @@ export class TopFiltersComponent implements OnInit {
     }
 
     else if(this.job==true){
-      let e=val.target.value.toLowerCase();
+      let e=value.target.value.toLowerCase();
       if(this.flag==null){
-        console.log(e,);
-        filteredcards=this.employees_local.filter(function (card : any) {
+        filtered_cards=this.employees_local.filter(function (card : any) {
           return (
             card.JobTitle.toLowerCase().startsWith(e)
           );
@@ -74,7 +73,7 @@ export class TopFiltersComponent implements OnInit {
 
       else {
         console.log(456);
-        filteredcards=this.employees_local.filter( (card : any) => {
+        filtered_cards=this.employees_local.filter( (card : any) => {
           return (
             card.JobTitle.toLowerCase().startsWith(e) && card.FirstName.startsWith(String.fromCharCode(this.flag+65))
           );
@@ -82,16 +81,16 @@ export class TopFiltersComponent implements OnInit {
       } 
     }
     
-    this.empService.employ_subject.next(filteredcards);
+    this.empService.employ_subject.next(filtered_cards);
   }
   
-  drp_fltr(drop : any) {
-    let filteredcards;
+  dropFilter(drop : any) {
+    let filtered_cards;
     if (drop.target.value == "Preferred Name") {
       this.name=true;
       this.department=false;
       this.job=false;
-      filteredcards=this.employees_local.sort((a : any, b : any) =>
+      filtered_cards=this.employees_local.sort((a : any, b : any) =>
       a.PreferredName < b.PreferredName ? -1 : 1
       )
     }
@@ -99,7 +98,7 @@ export class TopFiltersComponent implements OnInit {
       this.name=false;
       this.department=true;
       this.job=false;
-      filteredcards=this.employees_local.sort((a : any, b : any) =>
+      filtered_cards=this.employees_local.sort((a : any, b : any) =>
       a.Department < b.Department ? -1 : 1
     );
     } 
@@ -107,24 +106,23 @@ export class TopFiltersComponent implements OnInit {
       this.name=false;
       this.department=false;
       this.job=true;
-      filteredcards=this.employees_local.sort((a : any, b : any) =>
+      filtered_cards=this.employees_local.sort((a : any, b : any) =>
       a.JobTitle < b.JobTitle ? -1 : 1
     );
     }
-    this.empService.employ_subject.next(filteredcards);
+    this.empService.employ_subject.next(filtered_cards);
     }
   constructor(private empService : EmployeeService) {
-    this.employees_local=this.empService.getEmployees();
-    
+    this.employees_local=this.empService.getEmployees(); 
   }
 
   flag : any;
 
   ngOnInit(): void {
-    this.empService.alpha();
-    this.empService.department();
-    this.empService.job();
-    this.empService.flag_subject.subscribe(val =>{this.flag=val;});
+    this.empService.createAlphabetFlag();
+    this.empService.createDepartmentFlag();
+    this.empService.createJobFlag();
+    this.empService.flag_subject.subscribe(value =>{this.flag=value;});
   }
 
 }

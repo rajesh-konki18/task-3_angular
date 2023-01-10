@@ -1,6 +1,6 @@
-<div class="alphabets">
-    <p class="alpha"><img src="../assets/user.jpg" alt="" id="primary-img"></p>
-    <p class="alpha" [ngClass]=" alpha_flags[i]==1 ? 'brdr':'no_brdr'" (click)="alpha_fltr(letter,i)" *ngFor="let letter of letters; let i=index">
+<div class="flex-row">
+    <p class="alpha"><img src="../assets/user.jpg" alt="" id="img-primary"></p>
+    <p class="alpha" [ngClass]=" alphabet_flags[i]==1 ? 'brdr':'no-brdr'" (click)="filterAlphabets(letter,i)" *ngFor="let letter of letters; let i=index">
         {{letter}}
     </p>
 </div>

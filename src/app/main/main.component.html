@@ -21,11 +21,11 @@
             <app-left-filters></app-left-filters>
         </div>
         <div class="primary-section">
-            <!-- alpha filters component -->
+            <!-- alphabet filters component -->
             <app-alpha-filter ></app-alpha-filter>
             <div class="secondary-section">
                 <!-- top filters component -->
-                <app-top-filters (clr_event)="clear()"></app-top-filters>
+                <app-top-filters (clear_event)="clearFilters()"></app-top-filters>
                 <!-- add edit component -->
                 <app-add-edit [index]="index"></app-add-edit> 
             </div>
@@ -34,7 +34,7 @@
             </div>
             <div class="fourth-outer">
                 <div class="fourth-section">
-                    <div *ngFor="let employee of employees_local; let i=index" class="card" (click)="show(i)">      
+                    <div *ngFor="let employee of employees_local; let i=index" class="card" (click)="showEmployeeDetails(i)">      
                         <img class="card-img" src= {{employee.src}} >
                         <div class="card-content">
                             <p class="text-small text-bold">{{employee.FirstName}}{{employee.LastName}}</p>

@@ -37,18 +37,18 @@ export class AlphaFilterComponent implements OnInit {
     'Y',
     'Z',
   ];
-  alpha_flags: any = [];
+  alphabet_flags: any = [];
 
-  alpha_fltr(alpha: string, i: number) {
-    let val = alpha.toLowerCase();
-    this.alpha_flags = this.empService.flag_alphabets();
-    this.empService.department_flags = this.empService.flag_departments();
-    this.empService.job_flags = this.empService.flag_jobs();
-    this.alpha_flags[i] = 1;
-    let filteredcards = this.employees_local.filter(function (card: any) {
-      return card.FirstName.toLowerCase().startsWith(val);
+  filterAlphabets(alphabet: string, i: number) {
+    let value = alphabet.toLowerCase();
+    this.alphabet_flags = this.empService.flagAlphabets();
+    this.empService.department_flags = this.empService.flagDepartments();
+    this.empService.job_flags = this.empService.flagJobs();
+    this.alphabet_flags[i] = 1;
+    let filtered_cards = this.employees_local.filter(function (card: any) {
+      return card.FirstName.toLowerCase().startsWith(value);
     });
-    this.empService.employ_subject.next(filteredcards);
+    this.empService.employ_subject.next(filtered_cards);
     this.empService.flag_subject.next(i);
   }
 
@@ -57,6 +57,6 @@ export class AlphaFilterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.empService.alpha();
+    this.empService.createAlphabetFlag();
   }
 }

@@ -9,7 +9,6 @@ export class EmployeeService {
   employ_subject = new Subject();
   job_subject = new Subject();
   department_subject = new Subject();
-  filter_subject = new Subject();
   flag_subject = new Subject();
 
   filters: any;
@@ -17,7 +16,124 @@ export class EmployeeService {
   department_flags: any;
   job_flags: any;
 
-  new_department (ar: any[]) {
+  Employees = [
+    this.newEmployee([
+      '../assets/img-1.jpg',
+      'Antony ',
+      'Morris',
+      'SharePoint Practice Head',
+      'Antony',
+      'IT Department',
+      9876543210,
+      'abc@gmail.com',
+      3421783,
+      'Seattle',
+    ]),
+    this.newEmployee([
+      '../assets/img-2.jpg',
+      'Helen ',
+      'Zipperman',
+      'Operations Manager',
+      'Helen',
+      'IT Department',
+      9876543210,
+      'abc@gmail.com',
+      3421783,
+      'Seattle',
+    ]),
+    this.newEmployee([
+      '../assets/img-3.jpg',
+      'Jonathan ',
+      'Smith',
+      'Product Manager',
+      'Jonathan',
+      'IT Department',
+      9876543210,
+      'abc@gmail.com',
+      3421783,
+      'India',
+    ]),
+    this.newEmployee([
+      '../assets/img-4.jpg',
+      'Angela ',
+      'Bailey',
+      'Talent Manager Jr.',
+      'Angela',
+      'HR Department',
+      9876543210,
+      'abc@gmail.com',
+      3421783,
+      'India',
+    ]),
+    this.newEmployee([
+      '../assets/img-5.jpg',
+      'Tami ',
+      'Hopkins',
+      'Lead Engineer Dot Net',
+      'Tami',
+      'IT Department',
+      9876543210,
+      'abc@gmail.com',
+      3421783,
+      'India',
+    ]),
+    this.newEmployee([
+      '../assets/img-6.jpg',
+      'Franklin ',
+      'Humark',
+      'Network Engineer',
+      'Franklin',
+      'IT Department',
+      9876543210,
+      'abc@gmail.com',
+      3421783,
+      'India',
+    ]),
+    this.newEmployee([
+      '../assets/img-7.jpg',
+      'Olivia ',
+      'Watson',
+      'UI Designer',
+      'Olivia',
+      'UX Department',
+      9876543210,
+      'abc@gmail.com',
+      3421783,
+      'India',
+    ]),
+    this.newEmployee([
+      '../assets/img-8.jpg',
+      'Robert ',
+      'Mitchell',
+      'Software Engineer',
+      'Robert',
+      'IT Department',
+      9876543210,
+      'abc@gmail.com',
+      3421783,
+      'India',
+    ]),
+  ];
+
+  Departments = [
+    this.newDepartment(['IT', 6]),
+    this.newDepartment(['HR', 1]),
+    this.newDepartment(['UX', 1]),
+    this.newDepartment(['Sales', 1]),
+  ];
+
+  Jobs = [
+    this.newJob(['SharePoint Practice Head', 1]),
+    this.newJob(['Operations Manager', 1]),
+    this.newJob(['Product Manager', 1]),
+    this.newJob(['Talent Manager Jr.', 1]),
+    this.newJob(['Lead Engineer Dot Net', 1]),
+    this.newJob(['Network Engineer', 1]),
+    this.newJob(['UI Designer', 1]),
+    this.newJob(['Software Engineer', 1]),
+  ];
+
+  newDepartment (ar: any[]) {
     let new_department = {
       department: '',
       num: 1,
@@ -29,7 +145,7 @@ export class EmployeeService {
     return new_department;
   }
 
-  new_job(ar: any[]) {
+  newJob(ar: any[]) {
     let job = {
       job: '',
       num: 1,
@@ -41,7 +157,7 @@ export class EmployeeService {
     return job;
   }
 
-  new_employee(ar: any[]) {
+  newEmployee(ar: any[]) {
     var employ_main = {
       src: '',
       FirstName: '',
@@ -70,172 +186,58 @@ export class EmployeeService {
     return employ_main;
   }
 
-  employees = [
-    this.new_employee([
-      '../assets/img-1.jpg',
-      'Antony ',
-      'Morris',
-      'SharePoint Practice Head',
-      'Antony',
-      'IT Department',
-      9876543210,
-      'abc@gmail.com',
-      3421783,
-      'Seattle',
-    ]),
-    this.new_employee([
-      '../assets/img-2.jpg',
-      'Helen ',
-      'Zipperman',
-      'Operations Manager',
-      'Helen',
-      'IT Department',
-      9876543210,
-      'abc@gmail.com',
-      3421783,
-      'Seattle',
-    ]),
-    this.new_employee([
-      '../assets/img-3.jpg',
-      'Jonathan ',
-      'Smith',
-      'Product Manager',
-      'Jonathan',
-      'IT Department',
-      9876543210,
-      'abc@gmail.com',
-      3421783,
-      'India',
-    ]),
-    this.new_employee([
-      '../assets/img-4.jpg',
-      'Angela ',
-      'Bailey',
-      'Talent Manager Jr.',
-      'Angela',
-      'HR Department',
-      9876543210,
-      'abc@gmail.com',
-      3421783,
-      'India',
-    ]),
-    this.new_employee([
-      '../assets/img-5.jpg',
-      'Tami ',
-      'Hopkins',
-      'Lead Engineer Dot Net',
-      'Tami',
-      'IT Department',
-      9876543210,
-      'abc@gmail.com',
-      3421783,
-      'India',
-    ]),
-    this.new_employee([
-      '../assets/img-6.jpg',
-      'Franklin ',
-      'Humark',
-      'Network Engineer',
-      'Franklin',
-      'IT Department',
-      9876543210,
-      'abc@gmail.com',
-      3421783,
-      'India',
-    ]),
-    this.new_employee([
-      '../assets/img-7.jpg',
-      'Olivia ',
-      'Watson',
-      'UI Designer',
-      'Olivia',
-      'UX Department',
-      9876543210,
-      'abc@gmail.com',
-      3421783,
-      'India',
-    ]),
-    this.new_employee([
-      '../assets/img-8.jpg',
-      'Robert ',
-      'Mitchell',
-      'Software Engineer',
-      'Robert',
-      'IT Department',
-      9876543210,
-      'abc@gmail.com',
-      3421783,
-      'India',
-    ]),
-  ];
-
-  departments = [
-    this.new_department(['IT', 6]),
-    this.new_department(['HR', 1]),
-    this.new_department(['UX', 1]),
-    this.new_department(['Sales', 1]),
-  ];
-
-  jobs = [
-    this.new_job(['SharePoint Practice Head', 1]),
-    this.new_job(['Operations Manager', 1]),
-    this.new_job(['Product Manager', 1]),
-    this.new_job(['Talent Manager Jr.', 1]),
-    this.new_job(['Lead Engineer Dot Net', 1]),
-    this.new_job(['Network Engineer', 1]),
-    this.new_job(['UI Designer', 1]),
-    this.new_job(['Software Engineer', 1]),
-  ];
-
-  constructor() {}
-
   getEmployees() {
     let e: any = localStorage.getItem('employees');
     return JSON.parse(e);
   }
-  putEmployeesLocalBegin() {
+  putEmployeesStorage() {
     if (localStorage.getItem('employees') == null) {
-      localStorage.setItem('employees', JSON.stringify(this.employees));
+      localStorage.setItem('employees', JSON.stringify(this.Employees));
     }
   }
   getJobs() {
     let e: any = localStorage.getItem('jobs');
     return JSON.parse(e);
   }
-  putJobsLocalBegin() {
+  putJobsStorage() {
     if (localStorage.getItem('jobs') == null) {
-      localStorage.setItem('jobs', JSON.stringify(this.jobs));
+      localStorage.setItem('jobs', JSON.stringify(this.Jobs));
     }
   }
   getDepartments() {
     let e: any = localStorage.getItem('departments');
     return JSON.parse(e);
   }
-  putDepartmentsLocalBegin() {
+  putDepartmentsStorage() {
     if (localStorage.getItem('departments') == null) {
-      localStorage.setItem('departments', JSON.stringify(this.departments));
+      localStorage.setItem('departments', JSON.stringify(this.Departments));
     }
   }
 
-  flag_alphabets() {
+  flagAlphabets() {
     return this.alpha_flags.fill(0);
   }
-  flag_departments() {
+  flagDepartments() {
     return this.department_flags.fill(0);
   }
-  flag_jobs() {
+  flagJobs() {
     return this.job_flags.fill(0);
   }
-  alpha() {
+
+  createAlphabetFlag() {
     this.alpha_flags= new Array<number>(26).fill(0)
     return this.alpha_flags;
   }
-  job() {
+  createJobFlag() {
     this.job_flags= new Array<number>(8).fill(0)
     return this.job_flags;
   }
-  department() {
+  createDepartmentFlag() {
     this.department_flags= new Array<number>(4).fill(0)
     return this.department_flags;
   }
+
+  constructor() {
+  }
+
 }

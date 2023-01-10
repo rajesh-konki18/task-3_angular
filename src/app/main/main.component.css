@@ -86,15 +86,15 @@ a {
     margin-left: 4vw;
     margin-top: 4vh;
 }
-.alphabets {
+.flex-row {
     display: flex;
     justify-content: space-between;
     cursor: pointer;
 }
-#primary-img {
+#img-primary {
     width: 1.3vw;
 }
-.alphabets p{
+.flex-row p{
     background-color: #00B0FB;
     padding: 1%;
     font-size: 1.3vw;
@@ -142,9 +142,9 @@ a {
 .brdr {
     border: 3px solid #061e3f;
 }
-.lft_brdr {
+.lft-brdr {
     border-left: 2.5px solid black;
 }
-.nobrdr {
+.no-brdr {
     border: none;
 }

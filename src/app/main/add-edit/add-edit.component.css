@@ -5,10 +5,10 @@
 td .input {
     font-size: 1.5vw;
 }
-.button {
+.btn {
     text-align: right;
 }
-.button-blue {
+.btn-blue {
     background-color: #5495e5;
     padding: 1%;
     font-size: 1.2vw;
@@ -37,7 +37,7 @@ table td{
     font-size: 1.5vw;
     width: 100%;
 }
-.clicks {
+.buttons {
     display: flex;
     margin: 5% 20%;
     justify-content: space-between;

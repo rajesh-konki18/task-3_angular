@@ -1,53 +1,53 @@
-<div class="button">
-    <button class="button-blue" (click)="open_form()">Add Employee</button>
+<div class="btn">
+    <button class="btn-blue" (click)="openForm()">Add Employee</button>
 </div>
-<div class="pop-up">
-    <div id="container" [hidden]="pop_up"> 
+<div>
+    <div id="container" [hidden]="hide_form"> 
         <table>
             <tr>
                 <td>First Name</td>
-                <td><input [(ngModel)]="employee_new.FirstName" #frst="ngModel" type="text" class="input" name="FirstName"></td>
+                <td><input [(ngModel)]="NewEmployee.FirstName" #first="ngModel" type="text" class="input" name="FirstName"></td>
             </tr>
             <tr>
                 <td>Last Name</td>
-                <td><input [(ngModel)]="employee_new.LastName" type="text" class="input" #lst="ngModel" name="LastName"></td>
+                <td><input [(ngModel)]="NewEmployee.LastName" type="text" class="input" #last="ngModel" name="LastName"></td>
             </tr>
             <tr>
                 <td>Email</td>
-                <td><input [(ngModel)]="employee_new.email" type="email" class="input" #email="ngModel" name="email"></td>
+                <td><input [(ngModel)]="NewEmployee.email" type="email" class="input" #email="ngModel" name="email"></td>
             </tr>
             <tr>
                 <td>Job Title</td>
-                <td><select name="Job" class="input" #job="ngModel" [(ngModel)]="employee_new.JobTitle">
+                <td><select name="Job" class="input" #job="ngModel" [(ngModel)]="NewEmployee.JobTitle">
                     <option value={{job.job}} *ngFor="let job of jobs">{{job.job}}</option>
                 </select></td>
             </tr>
             <tr>
                 <td>Office</td>
-                <td><select name="Office" class="input" #office="ngModel" [(ngModel)]="employee_new.office">
+                <td><select name="Office" class="input" #office="ngModel" [(ngModel)]="NewEmployee.office">
                     <option value="Seattle">Seattle</option>
                     <option value="India">India</option>
                 </select></td>
             </tr>
             <tr>
                 <td>Department</td>
-                <td><select name="department" class="input" #depart="ngModel" [(ngModel)]="employee_new.Department">
+                <td><select name="department" class="input" #depart="ngModel" [(ngModel)]="NewEmployee.Department">
                     <option value={{department.department}} *ngFor="let department of departments">{{department.department}}</option>
                 </select></td>
             </tr>
             <tr>
                 <td>Phone Number</td>
-                <td><input type="tel" class="input" #phn="ngModel" [(ngModel)]="employee_new.PhoneNumber" name="phone number"></td>
+                <td><input type="tel" class="input" #phn="ngModel" [(ngModel)]="NewEmployee.PhoneNumber" name="phone number"></td>
             </tr>
             <tr>
                 <td>Skype ID</td>
-                <td><input type="text" class="input" #skype="ngModel" [(ngModel)]="employee_new.SkypeID" name="SkypeID"></td>
+                <td><input type="text" class="input" #skype="ngModel" [(ngModel)]="NewEmployee.SkypeID" name="SkypeID"></td>
             </tr>
         </table>
-        <div class="clicks">
-            <button id='save' class="button-blue" [hidden]="hide_save" (click)="save_changes(frst,lst,email,job,office,depart,phn,skype)">save</button>
-            <button class="button-blue" (click)="close_form()">Submit</button>
-            <button id="add" class="button-blue" (click)="add_employee(frst,lst,email,job,office,depart,phn,skype)">add</button>
+        <div class="buttons">
+            <button class="btn-blue" [hidden]="hide_savebtn" (click)="saveEmployeeChanges(first,last,email,job,office,depart,phn,skype)">save</button>
+            <button class="btn-blue" (click)="closeForm()">Submit</button>
+            <button class="btn-blue" (click)="addEmployee(first,last,email,job,office,depart,phn,skype)">add</button>
         </div>
     </div>
 </div>

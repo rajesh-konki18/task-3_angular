@@ -13,9 +13,9 @@ export class MainComponent implements OnInit {
 
   index=0;
 
-  clear() {
+  clearFilters() {
     this.employees_local=this.empService.getEmployees();
-    this.empService.flag_alphabets();
+    this.empService.flagAlphabets();
     this.empService.flag_subject.next(null);
   }
 
@@ -23,27 +23,25 @@ export class MainComponent implements OnInit {
   employees_local : any;
   jobs_local : any;
   departments_local : any;
-  filteredcards : any;
 
   constructor(private empService : EmployeeService){
     // localStorage.clear();
-    this.empService.putEmployeesLocalBegin();
-    this.empService.putDepartmentsLocalBegin();
-    this.empService.putJobsLocalBegin();
+    this.empService.putEmployeesStorage();
+    this.empService.putDepartmentsStorage();
+    this.empService.putJobsStorage();
 
     this.employees_local=this.empService.getEmployees();
     this.jobs_local =this.empService.getJobs();
     this.departments_local=this.empService.getDepartments();
     
-  
   }
 
-  show(i : any){
-    this.AddEditComponent.show(i);
-    this.index=i;
+  showEmployeeDetails(index : any){
+    this.AddEditComponent.showEmployeeDetails(index);
+    this.index=index;
   }
  
   ngOnInit(): void {
-    this.empService.employ_subject.subscribe(val => { this.employees_local=val;});
+    this.empService.employ_subject.subscribe(value => { this.employees_local=value;});
   }
 }
