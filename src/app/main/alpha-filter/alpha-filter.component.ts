@@ -40,6 +40,7 @@ export class AlphaFilterComponent implements OnInit {
   alphabet_flags: any = [];
 
   filterAlphabets(alphabet: string, i: number) {
+    //change name
     let value = alphabet.toLowerCase();
     this.alphabet_flags = this.empService.flagAlphabets();
     this.empService.department_flags = this.empService.flagDepartments();
@@ -48,7 +49,7 @@ export class AlphaFilterComponent implements OnInit {
     let filtered_cards = this.employees_local.filter(function (card: any) {
       return card.FirstName.toLowerCase().startsWith(value);
     });
-    this.empService.employ_subject.next(filtered_cards);
+    this.empService.employ_subject.next(filtered_cards); // no need to mention subject type
     this.empService.flag_subject.next(i);
   }
 
